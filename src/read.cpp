@@ -41,36 +41,18 @@ void Read::analyze(OutputStructure& output){
 
             if (this->originalSequence[i] != this->referenceSequence[i]){
 
-                if (this->correctedSequence != "not_corrected"){
+                if (this->correctedSequence[i] == this->referenceSequence[i]){
 
-                    if (this->correctedSequence[i] == this->referenceSequence[i]){
-
-                        ++output.truePositives;
-
-                    } else if (this->correctedSequence[i] != this->originalSequence[i]){
-
-                        ++output.wrongCorrection;
-
-                    } else {
-
-                        ++output.falseNegatives;
-                    }
+                    ++output.truePositives;
 
                 } else {
 
-                    ++output.notCorrectedButShould;
+                    ++output.falseNegatives;
                 }
 
-            } else if (this->correctedSequence != "not_corrected"){
+            } else if (this->correctedSequence[i] != this->originalSequence[i]) {
 
-                if (this->correctedSequence[i] != this->originalSequence[i]){
-
-                    ++output.falsePositives;
-                }
-
-            } else {
-
-                ++output.notCorrectedAndShouldnt;
+                ++output.falsePositives;
             }
 
         }

@@ -131,10 +131,10 @@ vector<string> Master::readSettingsFile(string& settingsFilePath){
         cout<<"\n     Error: cannot find read set name in settings file, exiting... \n";
     }
 
-    if (tempReadSet != "null"){
+    if (tempReference != "null"){
         output.push_back(tempReference);
     } else {
-        cout<<"\n     Error: cannot find read set name in settings file, exiting... \n";
+        cout<<"\n     Error: cannot find reference name in settings file, exiting... \n";
     }
 
     return output;

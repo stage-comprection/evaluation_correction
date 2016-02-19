@@ -19,9 +19,9 @@ OutputStructure::OutputStructure(){
 // Writes results to output file
 void OutputStructure::exportResults(std::ofstream& outputFile){
 
-    outputFile<<"Gain\tTruePositives\tFalsePositives\tFalseNegatives\tNotCorrectedButShould\tNotCorrectedAndShouldnt\tNotAligned\tReadsProcessed\n";
+    outputFile<<"Gain\tTruePositives\tFalsePositives\tFalseNegatives\tNotAligned\tReadsProcessed\n";
     outputFile<<this->gain<<"\t"<<this->truePositives<<"\t"<<this->falsePositives<<"\t"<<this->falseNegatives<<"\t"
-              <<this->notCorrectedButShould<<"\t"<<this->notCorrectedAndShouldnt<<"\t"<<this->notAligned<<"\t"<<this->nReadsProcessed<<std::endl;
+              <<this->notAligned<<"\t"<<this->nReadsProcessed<<std::endl;
     outputFile.close();
 }
 
