@@ -261,34 +261,20 @@ void FileHandler::splitReferenceReadsFiles(){
 
     resetFileIndex(this->referenceFile);
 
+    string line;
     int readNumber = 0, fileNumber = 0;
-    vector<string> splittedLine;
 
-    string alignmentLine, sequence;
+    while(getline(this->alignmentFile, line)){
 
-    // Skips alignment header lines
-    alignmentLine = this->skipAlignmentHeaderLines();
+        if(line[0]=='>'){
+            readNumber = stoi(line.substr(1, line.length()));
+            fileNumber = readNumber % this->nFilesForSplitting;
+            files[fileNumber]<< line + "\n";
+        } else {
+            files[fileNumber]<< line + "\n";
+        }
 
-    do {
-
-        splittedLine = split(alignmentLine);
-
-        readNumber = stoi(splittedLine[0]);
-
-        if (splittedLine[2] not_eq "*"){ // "*" means that alignment was not found for this read
-
-             sequence = this->getReferenceSequence(stoi(splittedLine[2]), stoi(splittedLine[3]), stoi(splittedLine[1]));
-
-         } else {
-
-             sequence = "not_aligned";
-         }
-
-        fileNumber = readNumber % this->nFilesForSplitting;
-        files[fileNumber]<< ">" + to_string(readNumber) + "\n";
-        files[fileNumber]<< sequence + "\n";
-
-    } while (getline(this->alignmentFile, alignmentLine));
+    }
 
     for (uint i=0; i<files.size(); ++i){
         files[i].close();
