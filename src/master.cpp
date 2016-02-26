@@ -28,18 +28,18 @@ Master::Master(string& settingsFilePath){
 void Master::computeMetrics(){
 
 
-    // Loads reference genome in memory
-    this->fileHandler.getReferenceGenome();
+//    // Loads reference genome in memory
+//    this->fileHandler.getReferenceGenome();
 
-    // Gets original, corrected and reference sequences and stores them in temporary files (assigns one thread to each process)
-    thread splitOriginal(&FileHandler::splitOriginalReadsFiles, &this->fileHandler);
-    thread splitCorrected(&FileHandler::splitCorrectedReadsFiles, &this->fileHandler);
-    thread splitReference(&FileHandler::splitReferenceReadsFiles, &this->fileHandler);
+//    // Gets original, corrected and reference sequences and stores them in temporary files (assigns one thread to each process)
+//    thread splitOriginal(&FileHandler::splitOriginalReadsFiles, &this->fileHandler);
+//    thread splitCorrected(&FileHandler::splitCorrectedReadsFiles, &this->fileHandler);
+//    thread splitReference(&FileHandler::splitReferenceReadsFiles, &this->fileHandler);
 
-    // Synchronizes threads:
-    splitOriginal.join();
-    splitCorrected.join();
-    splitReference.join();
+//    // Synchronizes threads:
+//    splitOriginal.join();
+//    splitCorrected.join();
+//    splitReference.join();
 
     uint threadNumber = 0;
     vector<thread> threads;
@@ -59,7 +59,7 @@ void Master::computeMetrics(){
         }
     }
 
-    this->fileHandler.cleanupTempFiles();
+//    this->fileHandler.cleanupTempFiles();
 
     this->output.computeGain();
     this->output.exportResults(this->fileHandler.outputFile);
