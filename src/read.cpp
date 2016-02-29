@@ -25,6 +25,8 @@ void Read::analyze(OutputStructure& output){
     uint minimumLength = min(this->originalSequence.size(), this->referenceSequence.size());
     minimumLength = min(minimumLength, (uint) this->correctedSequence.size());
 
+//    cout<<"O :  "<<this->originalSequence<<"\nC :  "<<this->correctedSequence<<"\nR :  "<<this->referenceSequence<<"\n\n\n";
+
     /* How are values computed:
      * If base is corrected and correction is right (same as reference), true positive
      * If base is corrected but correction is wrong (not the reference), false positive

@@ -59,7 +59,7 @@ void Master::computeMetrics(){
         }
     }
 
-//    this->fileHandler.cleanupTempFiles();
+    this->fileHandler.cleanupTempFiles();
 
     this->output.computeGain();
     this->output.exportResults(this->fileHandler.outputFile);
