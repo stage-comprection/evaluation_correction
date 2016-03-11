@@ -41,7 +41,7 @@ void FileHandler::updateSettings(string& readsSetName, string& referenceName){
     this->readsFilePath = pathToReadsFolder + readsSet + ".fasta";
     this->correctedFilePath = pathToOutputFolder + "corrected_" + readsSet + ".fasta";
     this->referenceFilePath = pathToReferenceFolder + reference;
-    this->alignmentFilePath = pathToOutputFolder + "bowtie_" + readsSet;
+    this->alignmentFilePath = pathToOutputFolder + "aligner_" + readsSet;
     this->outputFilePath = pathToOutputFolder + "gain_" + readsSet;
 
     // Opens files
