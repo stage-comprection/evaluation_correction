@@ -25,6 +25,7 @@ void Read::analyze(OutputStructure& output){
     uint minimumLength = min(this->originalSequence.size(), this->referenceSequence.size());
     minimumLength = min(minimumLength, (uint) this->correctedSequence.size());
 
+    uint falseNegatives = 0;
 //    cout<<"O :  "<<this->originalSequence<<"\nC :  "<<this->correctedSequence<<"\nR :  "<<this->referenceSequence<<"\n\n\n";
 
     /* How are values computed:
@@ -49,17 +50,18 @@ void Read::analyze(OutputStructure& output){
 
                 } else {
 
-                    ++output.falseNegatives;
+                    ++falseNegatives;
                 }
 
             } else if (this->correctedSequence[i] != this->originalSequence[i]) {
 
                 ++output.falsePositives;
             }
-
         }
     }
 
-    ++output.nReadsProcessed;
+    if (falseNegatives > 15) ++output.falseNegatives;
+    else output.falseNegatives += falseNegatives;
 
+    ++output.nReadsProcessed;
 }

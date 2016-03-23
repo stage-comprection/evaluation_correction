@@ -27,7 +27,6 @@ Master::Master(string& settingsFilePath){
 // Calculates the gain obtained after correction, using the number of True Positives, False Positives and False Negatives
 void Master::computeMetrics(){
 
-
     // Loads reference genome in memory
     this->fileHandler.getReferenceGenome();
 

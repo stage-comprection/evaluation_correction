@@ -108,7 +108,7 @@ string FileHandler::skipAlignmentHeaderLines(){
 
     do{
         getline(this->alignmentFile, line);
-    }while (line[0] == '@'); // SAM files sometimes have a bunch of header lines starting with '@'
+    } while (line[0] == '@'); // SAM files sometimes have a bunch of header lines starting with '@'
 
     return line;
 }
